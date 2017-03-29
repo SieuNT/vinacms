@@ -24,8 +24,17 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<?= Alert::widget() ?>
-<?= $content ?>
+<div class="wrapper-page animated fadeInDown">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading">
+            <h3 class="text-center m-t-10"><strong>Vina</strong>CMS</h3>
+        </div>
+        <div class="panel-body">
+            <?= Alert::widget() ?>
+            <?= $content ?>
+        </div>
+    </div>
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>
