@@ -11,6 +11,7 @@ class AdminAsset extends AssetBundle
     public $sourcePath = __DIR__.'/assets';
     public $js = [
         'js/pace.min.js',
+        'js/wow.min.js',
         'js/sweetalert.min.js',
         'js/jquery.nicescroll.js',
         'js/jquery.scrollTo.min.js',
