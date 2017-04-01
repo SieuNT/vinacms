@@ -1,0 +1,44 @@
+version: '2'
+services:
+  application:
+    image: busybox:latest
+    volumes:
+      - $PWD:/var/www
+  nginx:
+    build: docker/nginx
+    ports:
+      - "9090:80"
+    volumes_from:
+      - application
+    depends_on:
+      - php-fpm
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+  php-fpm:
+    build: docker/php
+    volumes_from:
+      - application
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    depends_on:
+      - mysql
+#  nginx-proxy:
+#    image: jwilder/nginx-proxy
+#    container_name: nginx-proxy
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - /var/run/docker.sock:/tmp/docker.sock:ro
+  mysql:
+    build: docker/mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
