@@ -1,7 +1,7 @@
 FROM php:7.1.3-fpm
 
 MAINTAINER Mr.Super <dev.phpjs@gmail.com>
-WORKDIR /var/www/web
+WORKDIR /var/www
 
 COPY . /var/www
 
