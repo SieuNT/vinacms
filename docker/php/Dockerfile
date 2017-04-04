@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
-    && docker-php-ext-install mysql pdo-mysql pgsql mbstring intl xmlrpc xsl \
+    && docker-php-ext-install pdo pdo_pgsql pdo_mysql pgsql mbstring intl xmlrpc xsl \
     && rm -r /var/lib/apt/lists/*
 # Enable module
 RUN a2enmod rewrite
