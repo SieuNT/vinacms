@@ -3,7 +3,7 @@
 namespace console\controllers;
 
 use common\models\User;
-use common\rbac\OwnModelRule;
+use vinacms\rbac\OwnModelRule;
 use yii\console\Controller;
 use yii\helpers\Console;
 
