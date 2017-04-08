@@ -1,4 +1,6 @@
 <?php
+use common\models\User;
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -49,6 +51,11 @@ return [
         'class' => \vinacms\behaviors\GlobalAccessBehavior::class,
         'rules' => [
             [
+                'controllers' => ['gii/default'],
+                'allow' => true,
+                'roles' => [User::ROLE_SUPER_ADMIN],
+            ],
+            [
                 'controllers' => ['site'],
                 'allow' => true,
                 'actions' => ['login'],
@@ -70,6 +77,11 @@ return [
                 'controllers' => ['site'],
                 'allow' => true,
                 'roles' => ['accessBackend'],
+            ],
+            [
+                'controllers' => ['user'],
+                'allow' => true,
+                'roles' => [User::ROLE_ADMIN],
             ]
         ],
     ],

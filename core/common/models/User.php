@@ -18,12 +18,14 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $auth_key
  * @property integer $status
+ * @property integer $roles
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    protected $roles;
     const STATUS_DEACTIVATED = 0;
     const STATUS_ACTIVE = 10;
 
@@ -58,8 +60,20 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            ['roles', 'default', 'value' => self::ROLE_MEMBER],
+            ['roles', 'in', 'range' => [
+                self::ROLE_BANNED,
+                self::ROLE_MEMBER,
+                self::ROLE_EDITOR,
+                self::ROLE_MANAGER,
+                self::ROLE_ADMIN,
+                self::ROLE_SUPER_ADMIN
+            ]],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DEACTIVATED]],
+            ['status', 'in', 'range' => [
+                self::STATUS_ACTIVE,
+                self::STATUS_DEACTIVATED
+            ]],
         ];
     }
 
@@ -202,7 +216,8 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    public static function roles() {
+    public static function roles()
+    {
         return [
             self::ROLE_SUPER_ADMIN => Yii::t('app', 'Super Admin'),
             self::ROLE_ADMIN => Yii::t('app', 'Admin'),
