@@ -1,4 +1,5 @@
 <?php
+
 namespace common\models;
 
 use Yii;
@@ -23,11 +24,11 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
+    const STATUS_DEACTIVATED = 0;
     const STATUS_ACTIVE = 10;
 
     const ROLE_BANNED = 'BANNED';
-    const ROLE_USER = 'USER';
+    const ROLE_MEMBER = 'MEMBER';
     const ROLE_EDITOR = 'EDITOR';
     const ROLE_MANAGER = 'MANAGER';
     const ROLE_ADMIN = 'ADMIN';
@@ -58,7 +59,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DEACTIVATED]],
         ];
     }
 
@@ -119,7 +120,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -191,5 +192,24 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function statuses()
+    {
+        return [
+            self::STATUS_ACTIVE => Yii::t('app', 'Active'),
+            self::STATUS_DEACTIVATED => Yii::t('app', 'Deactivated'),
+        ];
+    }
+
+    public static function roles() {
+        return [
+            self::ROLE_SUPER_ADMIN => Yii::t('app', 'Super Admin'),
+            self::ROLE_ADMIN => Yii::t('app', 'Admin'),
+            self::ROLE_MANAGER => Yii::t('app', 'Manager'),
+            self::ROLE_EDITOR => Yii::t('app', 'Editor'),
+            self::ROLE_MEMBER => Yii::t('app', 'Member'),
+            self::ROLE_BANNED => Yii::t('app', 'Banned'),
+        ];
     }
 }

@@ -46,7 +46,7 @@ return [
         ],
     ],
     'as globalAccess' => [
-        'class' => 'vinacms\behaviors\GlobalAccessBehavior',
+        'class' => \vinacms\behaviors\GlobalAccessBehavior::class,
         'rules' => [
             [
                 'controllers' => ['site'],
@@ -68,8 +68,8 @@ return [
             ],
             [
                 'controllers' => ['site'],
-                'allow' => false,
-                'roles' => ['EDITOR'],
+                'allow' => true,
+                'roles' => ['accessBackend'],
             ]
         ],
     ],

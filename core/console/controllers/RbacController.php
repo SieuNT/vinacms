@@ -14,12 +14,12 @@ class RbacController extends Controller {
 
         //Banned
         $banned = $auth->createRole(User::ROLE_BANNED);
-        $banned->description = 'Banned Role';
+        $banned->description = 'Banned - Tài khoản người dùng bị khóa';
         $auth->add($banned);
 
         //User
-        $user = $auth->createRole(User::ROLE_USER);
-        $user->description = 'User Role';
+        $user = $auth->createRole(User::ROLE_MEMBER);
+        $user->description = 'Member - Tài khoản người dùng bình thường';
         $auth->add($user);
         $auth->addChild($user, $banned);
 
@@ -29,19 +29,19 @@ class RbacController extends Controller {
 
         //Editor
         $editor = $auth->createRole(User::ROLE_EDITOR);
-        $editor->description = 'Manager content, SEO';
+        $editor->description = 'Editor - Tài khoản người dùng thêm sửa xóa bài viết và tối ưu hóa bài viết chuẩn SEO';
         $auth->add($editor);
         $auth->addChild($editor, $user);
 
         //Access to Backend Permission
         $accessBackend = $auth->createPermission('accessBackend');
-        $accessBackend->description = 'User have permission login to Backend';
+        $accessBackend->description = 'Cho phép user có quyền vào backend';
         $auth->add($accessBackend);
         $auth->addChild($editor, $accessBackend);
 
         //Manager
         $manager = $auth->createRole(User::ROLE_MANAGER);
-        $manager->description = 'Manager';
+        $manager->description = 'Manager - Có quyền quản lý';
         $auth->add($manager);
         $auth->addChild($manager, $editor);
 
@@ -53,7 +53,7 @@ class RbacController extends Controller {
 
         //Admin
         $super_admin = $auth->createRole(User::ROLE_SUPER_ADMIN);
-        $super_admin->description = 'Admin';
+        $super_admin->description = 'Super Admin';
         $auth->add($super_admin);
         $auth->addChild($super_admin, $admin);
 

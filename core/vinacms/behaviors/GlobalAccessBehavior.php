@@ -41,6 +41,7 @@ class GlobalAccessBehavior extends Behavior {
     }
     public function beforeAction()
     {
+//        echo '<pre>';print_r($this->rules);echo '</pre>';
         Yii::$app->controller->attachBehavior('access', [
             'class' => $this->accessControlFilter,
             'denyCallback' => $this->denyCallback,
