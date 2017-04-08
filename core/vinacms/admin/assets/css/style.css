@@ -188,7 +188,7 @@ aside.left-panel.lg + .content {
   display: block;
   padding: 12px 25px;
   color: #838F9A;
-  font-size: 15px;
+  font-size: 13px;
   text-decoration: none;
   transition: all 0.4s;
   -moz-transition: all 0.4s;
@@ -218,10 +218,9 @@ aside.left-panel.collapsed .navigation > ul > li > a .badge {
 
 .navigation ul li a i {
   margin-right: 6px;
-  font-size: 18px;
-  width: 25px;
+  font-size: 14px;
   float: left;
-  line-height: 24px;
+  line-height: 16px;
 }
 
 .navigation ul li a .nav-label {
@@ -236,8 +235,8 @@ aside.left-panel.collapsed .navigation > ul > li > a .badge {
 /*** 2.3 Sub Menu ***/
 .navigation ul li ul {
   display: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 aside:not(.collapsed) .navigation ul li.active ul {
@@ -253,7 +252,7 @@ aside:not(.collapsed) .navigation ul li.active ul {
   -moz-transition: all 0.2s;
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
-  font-size: 14px;
+  font-size: 13px;
   text-align: left;
   display: block;
   outline: none !important;
@@ -433,7 +432,6 @@ header .navbar-default .navbar-nav>li>a i{
 }
 
 .top-menu .dropdown-menu .media-body {
-  width: 70%;
 }
 .username {
   font-size: 14px;
@@ -458,7 +456,7 @@ header .navbar-default .navbar-nav>li>a i{
 }
 
 .wraper {
-  padding-top: 48px;
+  padding-top: 50px;
   min-height: 550px;
   padding-bottom: 70px;
 }
@@ -481,7 +479,7 @@ header .navbar-default .navbar-nav>li>a i{
   left: 250px;
   right: 0;
   bottom: 0;
-  padding: 20px 30px;
+  padding: 10px 30px;
   background-color: #E6EBEC;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -2240,4 +2238,12 @@ ul.p-social-link li a {
   color: #141719;
   text-decoration: none;
   outline: none;
+}
+
+thead.panel-heading {
+  font-size: 13px;
+}
+
+.hr-blank {
+  border: 0;
 }
