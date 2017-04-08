@@ -45,5 +45,33 @@ return [
             ],
         ],
     ],
+    'as globalAccess' => [
+        'class' => 'vinacms\behaviors\GlobalAccessBehavior',
+        'rules' => [
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'actions' => ['login'],
+                'roles' => ['?'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'actions' => ['logout'],
+                'roles' => ['@'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'actions' => ['error'],
+                'roles' => ['?', '@'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => false,
+                'roles' => ['EDITOR'],
+            ]
+        ],
+    ],
     'params' => $params,
 ];

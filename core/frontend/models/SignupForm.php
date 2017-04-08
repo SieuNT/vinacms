@@ -3,6 +3,7 @@ namespace frontend\models;
 
 use yii\base\Model;
 use common\models\User;
+use yii\db\Exception;
 
 /**
  * Signup form
@@ -52,7 +53,17 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        
-        return $user->save() ? $user : null;
+        $transaction = \Yii::$app->db->beginTransaction();
+        try {
+            $user->save();
+            $uid = $user->getId();
+            $auth = \Yii::$app->authManager;
+            $auth->assign($auth->getRole(User::ROLE_USER), $uid);
+            $transaction->commit();
+            return $user;
+        } catch (Exception $exception) {
+            $transaction->rollBack();
+            throw new Exception($exception->getMessage());
+        }
     }
 }

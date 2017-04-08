@@ -3,7 +3,7 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost:33066;dbname=vinacms',
+            'dsn' => 'mysql:host=mysql;dbname=vinacms',
             'username' => 'root',
             'password' => 'root',
             'charset' => 'utf8',
