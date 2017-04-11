@@ -2244,6 +2244,10 @@ thead.panel-heading {
   font-size: 13px;
 }
 
+thead.panel-heading a {
+  color: #fff;
+}
+
 .hr-blank {
   border: 0;
 }

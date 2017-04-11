@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use vinacms\admin\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */

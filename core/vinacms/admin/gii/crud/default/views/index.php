@@ -13,7 +13,7 @@ echo "<?php\n";
 ?>
 
 use yii\helpers\Html;
-use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
+use <?= $generator->indexWidgetType === 'grid' ? "vinacms\\admin\\GridView" : "vinacms\\admin\\ListView" ?>;
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
 
 /* @var $this yii\web\View */
@@ -28,9 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
 <?php endif; ?>
 
-    <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>, ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel-tools clearfix">
+        <div class="pull-left">
+            <?= "<?= " ?>Html::a(<?= $generator->generateString('Create') ?> . ' <i class="fa fa-plus"></i>', ['create'], ['class' => 'btn btn-purple w-xs']) ?>
+        </div>
+    </div>
+    <hr class="hr-blank" />
 <?= $generator->enablePjax ? '<?php Pjax::begin(); ?>' : '' ?>
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([

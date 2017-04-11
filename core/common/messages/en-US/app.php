@@ -2,4 +2,5 @@
 
 return [
     'login' => 'Login',
+    'Create' => 'Thêm mới'
 ];
