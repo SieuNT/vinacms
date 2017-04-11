@@ -25,7 +25,10 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    protected $roles;
+    /**
+     * @var
+     */
+    public $roles;
     const STATUS_DEACTIVATED = 0;
     const STATUS_ACTIVE = 10;
 
@@ -69,6 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
                 self::ROLE_ADMIN,
                 self::ROLE_SUPER_ADMIN
             ]],
+            ['roles', 'safe'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [
                 self::STATUS_ACTIVE,

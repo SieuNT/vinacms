@@ -58,7 +58,7 @@ class SignupForm extends Model
             $user->save();
             $uid = $user->getId();
             $auth = \Yii::$app->authManager;
-            $auth->assign($auth->getRole(User::ROLE_USER), $uid);
+            $auth->assign($auth->getRole(User::ROLE_MEMBER), $uid);
             $transaction->commit();
             return $user;
         } catch (Exception $exception) {
