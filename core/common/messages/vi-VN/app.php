@@ -2,5 +2,6 @@
 
 return [
     'login' => 'Đăng nhập',
-    'Create' => 'Thêm mới'
+    'Create' => 'Thêm mới',
+    'Update' => 'Cập nhật',
 ];
