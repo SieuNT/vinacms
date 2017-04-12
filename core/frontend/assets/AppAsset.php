@@ -11,7 +11,10 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = [];
+    public $css = [
+        '/themes/goldview/css/fonts/fonts.css',
+        '/themes/goldview/css/style.css',
+    ];
     public $js = [];
     public $depends = [
         'yii\web\YiiAsset',
