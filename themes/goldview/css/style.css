@@ -5,6 +5,8 @@
 
 .menu-top {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .menu-top li {
@@ -19,6 +21,10 @@
     text-transform: uppercase;
     font-family: "VNF-Futura";
     padding: 10px;
+}
+
+.menu-top li a:hover {
+    text-decoration: none;
 }
 
 .logo-wrap {
@@ -39,7 +45,7 @@
     background-size: cover;
     background-position-x: right;
     background-position-y: top;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
 }
 
@@ -167,4 +173,21 @@
 
 .slides-footer--title {
     transform: translateY(130%);
+}
+
+.desc-wrap {
+    padding: 20px;
+}
+
+.page-title {
+    color: #f4b512;
+    text-align: center;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: VNF-Futura;
+}
+
+.hr-blank {
+    border: none;
 }

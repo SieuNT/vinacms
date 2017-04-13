@@ -40,7 +40,13 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'site/index'
+                '/' => 'site/index',
+                'vi-tri' => 'site/vi-tri',
+                'mat-bang' => 'site/mat-bang',
+                'tien-ich' => 'site/tien-ich',
+                'can-ho-mau' => 'site/can-ho-mau',
+                'tien-do' => 'site/tien-do',
+                'thanh-toan-uu-dai' => 'site/thanh-toan-uu-dai',
             ],
         ],
     ],

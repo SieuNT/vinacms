@@ -210,4 +210,28 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionViTri() {
+        return $this->render('vitri');
+    }
+
+    public function actionMatBang() {
+        return $this->render('matbang');
+    }
+
+    public function actionTienIch() {
+        return $this->render('tienich');
+    }
+
+    public function actionCanHoMau() {
+        return $this->render('canhomau');
+    }
+
+    public function actionTienDo() {
+        return $this->render('tiendo');
+    }
+
+    public function actionThanhToanUuDai() {
+        return $this->render('thanhtoanuudai');
+    }
 }

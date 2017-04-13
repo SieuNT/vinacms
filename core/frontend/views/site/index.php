@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Trang chủ | VinaCMS';
+$this->title = 'Căn hộ chung cư tại The Gold View';
 ?>
 <div class="slides-gioithieu">
     <div class="container">

@@ -29,24 +29,24 @@ AppAsset::register($this);
         <div class="col-lg-5">
             <div class="menu-top-left pull-right">
                 <ul class="menu-top">
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Vị trí</a></li>
-                    <li><a href="#">Mặt bằng</a></li>
-                    <li><a href="#">Tiện ích</a></li>
+                    <li><?=Html::a('Giới thiệu', ['site/index']) ?></li>
+                    <li><?=Html::a('Vị trí', ['site/vi-tri']) ?></li>
+                    <li><?=Html::a('Mặt bằng', ['site/mat-bang']) ?></li>
+                    <li><?=Html::a('Tiện ích', ['site/tien-ich']) ?></li>
                 </ul>
             </div>
         </div>
         <div class="col-lg-2">
             <div class="logo-wrap center-block text-center">
-                <?= Html::img('/themes/goldview/img/logo.png', ['class' => 'logo img-responsive center-block text-center']) ?>
+                <?= Html::a(Html::img('/themes/goldview/img/logo.png', ['class' => 'logo img-responsive center-block text-center']), '/') ?>
             </div>
         </div>
         <div class="col-lg-5">
             <div class="menu-top-left pull-left">
                 <ul class="menu-top">
-                    <li><a href="#">Căn hộ mẫu</a></li>
-                    <li><a href="#">Tiến độ</a></li>
-                    <li><a href="#">Thanh toán & Ưu đãi</a></li>
+                    <li><?=Html::a('Căn hộ mẫu', ['site/can-ho-mau']) ?></li>
+                    <li><?=Html::a('Tiến độ', ['site/tien-do']) ?></li>
+                    <li><?=Html::a('Thanh toán & Ưu đãi', ['site/thanh-toan-uu-dai']) ?></li>
                 </ul>
             </div>
         </div>
