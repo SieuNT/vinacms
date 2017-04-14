@@ -25,6 +25,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'full_name') ?>
 
+    <?php // echo $form->field($model, 'avatar') ?>
+
+    <?php // echo $form->field($model, 'about_us') ?>
+
     <?php // echo $form->field($model, 'email') ?>
 
     <?php // echo $form->field($model, 'status') ?>

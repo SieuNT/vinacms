@@ -29,6 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'password_hash',
             'password_reset_token',
             'full_name',
+            // 'avatar',
+            // 'about_us:ntext',
             // 'email:email',
             // 'status',
             // 'created_at',
