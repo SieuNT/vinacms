@@ -29,6 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @var
      */
     public $roles;
+    public $password_confirm;
     const STATUS_DEACTIVATED = 0;
     const STATUS_ACTIVE = 10;
 
@@ -78,6 +79,17 @@ class User extends ActiveRecord implements IdentityInterface
                 self::STATUS_ACTIVE,
                 self::STATUS_DEACTIVATED
             ]],
+
+            ['full_name', 'filter', 'filter' => 'strip_tags'],
+            ['full_name', 'trim'],
+            ['full_name', 'required'],
+            ['full_name', 'string', 'max' => 70],
+
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'string', 'max' => 255],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => \Yii::t('app','This email address has already been taken.')],
         ];
     }
 

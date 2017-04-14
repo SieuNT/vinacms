@@ -119,7 +119,7 @@ AppAsset::register($this);
                 <li class="dropdown text-center">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <?= Html::img('/admin/img/logo.gif', ['class' => 'img-circle profile-img thumb-sm']) ?>
-                        <span class="username"><?= Yii::$app->user->identity->username; ?></span> <span
+                        <span class="username"><?= Yii::$app->user->identity->full_name; ?></span> <span
                                 class="caret"></span>
                     </a>
                     <ul class="dropdown-menu pro-menu" tabindex="5003" style="overflow: hidden; outline: none;">

@@ -7,20 +7,20 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
+$this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-<?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+<?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
 <?= $form->field($model, 'password')->passwordInput() ?>
 
 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
 <div class="form-group">
-    <?= Html::submitButton(Yii::t('app','login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+    <?= Html::submitButton(Yii::t('app','Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>
