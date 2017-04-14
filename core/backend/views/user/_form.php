@@ -21,7 +21,7 @@ use vinacms\admin\ActiveForm;
         'editorOptions' => [
             'preset' => 'basic', //basic, standard, full
         ],
-    ]); ?>
+    ]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
