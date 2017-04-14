@@ -1,5 +1,6 @@
 <?php
 
+use vinacms\tools\ckeditor\CKEditor;
 use yii\helpers\Html;
 use vinacms\admin\ActiveForm;
 
@@ -16,7 +17,11 @@ use vinacms\admin\ActiveForm;
 
     <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'about_us')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'about_us')->widget(CKEditor::className(),[
+        'editorOptions' => [
+            'preset' => 'basic', //basic, standard, full
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
