@@ -12,6 +12,10 @@ use vinacms\admin\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'status')->textInput() ?>
 
     <div class="form-group">
