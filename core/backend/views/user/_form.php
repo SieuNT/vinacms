@@ -1,6 +1,7 @@
 <?php
 
 use vinacms\tools\ckeditor\CKEditor;
+use vinacms\tools\elfinder\ElFinder;
 use yii\helpers\Html;
 use vinacms\admin\ActiveForm;
 
@@ -18,9 +19,9 @@ use vinacms\admin\ActiveForm;
     <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'about_us')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'preset' => 'basic', //basic, standard, full
-        ],
+        'editorOptions' => ElFinder::ckeditorOptions('elFinder', [
+            'preset' => 'basic',
+        ])
     ]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
