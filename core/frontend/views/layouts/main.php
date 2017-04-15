@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\web\View;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -110,11 +111,11 @@ AppAsset::register($this);
         <div class="col-lg-4">
             <div class="register-wrap">
                 <p><?= Html::img('/themes/goldview/img/register-title.png', ['class' => 'img-responsive center-block text-center']) ?></p>
-                <form role="form" class="register-form form-footer form-horizontal" data-index="1" action=""
+                <form role="form" class="register-form form-footer form-horizontal" data-index="2" action=""
                       method="post">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <div class="msg_form" id="msg_form_1"></div>
+                            <div class="msg_form" id="msg_form_2"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -138,7 +139,7 @@ AppAsset::register($this);
                         <div class="col-xs-12">
                             <div class="center-block text-center">
                                 <input type="hidden" name="Mailbox[secret_key]" value="01b2e0b33693c9ba42cf1204f37fcf55b2b1529ed4395e3754f341a243391a62"/>
-                                <button id="btn_register_1" class="btn-register"><?= Html::img('/themes/goldview/img/btn-register.png', ['class' => 'img-responsive']) ?></button>
+                                <button id="btn_register_2" class="btn-register"><?= Html::img('/themes/goldview/img/btn-register.png', ['class' => 'img-responsive']) ?></button>
                             </div>
                         </div>
                     </div>
@@ -147,6 +148,53 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
+<?php
+$js = <<<JS
+(function ($) {
+    var baseUrl = "http://duanthegoldview.net";
+    $('.register-form').submit(function () {
+        //$('#complete').remove();
+        var index = $(this).attr('data-index');
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: baseUrl + '/site/mail',
+            data: $(this).serialize(),
+            beforeSend: function () {
+                $('#btn_register_' + index).attr("disabled", true);
+                $('#msg_form_' + index).html('Đang gửi...').css('color:#fff');
+                $('.has-error.has-danger').removeClass('has-error has-danger');
+                $('.help-inline.text-danger.text-small').remove();
+            },
+            success: function (data) {
+                if (data.constructor === String) {
+                    data = JSON.parse(data);
+                }
+                $('#msg_form_' + index).html('');
+                window.location.href = "site/thanks";
+                $('#btn_register_' + index).removeAttr("disabled");
+            },
+            error: function (res) {
+                if (res.constructor === String) {
+                    var res = JSON.parse(res);
+                }
+                var errors = JSON.parse(res.responseText);
+                var message = '';
+                $.each(errors.message, function (k, v) {
+                    $('input[name="Mailboxes['+k+']"]').after('<span class="help-inline text-danger text-small"><small>'+ v +'</small></span>').closest('div').addClass('has-error has-danger');
+                });
+                $('#msg_form_' + index).html(message);
+                $('#btn_register_' + index).removeAttr("disabled");
+
+            }
+        });
+        return false;
+    });
+
+})(jQuery);
+JS;
+$this->registerJs($js, View::POS_END);
+?>
 <?php $this->endBody() ?>
 </body>
 </html>

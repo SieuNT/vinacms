@@ -45,6 +45,8 @@ return [
                 'mat-bang' => 'site/mat-bang',
                 'tien-ich' => 'site/tien-ich',
                 'can-ho-mau' => 'site/can-ho-mau',
+                'can-ho-mau-2-phong-ngu' => 'site/can-ho-mau-2-phong-ngu',
+                'can-ho-mau-3-phong-ngu' => 'site/can-ho-mau-3-phong-ngu',
                 'tien-do' => 'site/tien-do',
                 'thanh-toan-uu-dai' => 'site/thanh-toan-uu-dai',
             ],

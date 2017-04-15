@@ -191,3 +191,89 @@
 .hr-blank {
     border: none;
 }
+
+.slicks {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.canhomau-menu {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.canhomau-menu li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.canhomau-menu li a {
+    text-transform: uppercase;
+    color: #f4b512;
+    background: #002786;
+    font-family: VNF-Futura;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.matbang-menu-1 li a:hover,
+.matbang-menu-1 li a:focus,
+.matbang-menu-2 li a:hover,
+.matbang-menu-2 li a:focus,
+.canhomau-menu li a:hover,
+.canhomau-menu li a:focus{
+    text-decoration: none;
+}
+
+.matbang-menu-1 ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 0;
+    margin-left: 0;
+}
+
+.matbang-menu-1 li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.matbang-menu-1 li a {
+    text-transform: uppercase;
+    color: #f4b512;
+    background: #002786;
+    font-family: VNF-Futura;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.matbang-menu-2 ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+
+.matbang-menu-2 li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.matbang-menu-2 li a {
+    text-transform: uppercase;
+    color: #002786;
+    background: #f4b512;
+    font-family: VNF-Futura;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.msg_form {
+    color: #fff;
+    font-weight: bold;
+}

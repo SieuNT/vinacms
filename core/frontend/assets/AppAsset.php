@@ -13,9 +13,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         '/themes/goldview/css/fonts/fonts.css',
+        '/themes/goldview/slick/slick.css',
+        '/themes/goldview/slick/slick-theme.css',
         '/themes/goldview/css/style.css',
     ];
-    public $js = [];
+    public $js = [
+        '/themes/goldview/slick/slick.min.js',
+    ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
