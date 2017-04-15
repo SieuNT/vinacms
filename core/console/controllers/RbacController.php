@@ -5,6 +5,7 @@ namespace console\controllers;
 use common\models\User;
 use vinacms\rbac\OwnModelRule;
 use yii\console\Controller;
+use yii\db\Exception;
 use yii\db\QueryBuilder;
 use yii\helpers\Console;
 
@@ -58,16 +59,21 @@ class RbacController extends Controller {
         $auth->add($super_admin);
         $auth->addChild($super_admin, $admin);
 
-        //Create first user
-        $user = new User();
-        $user->username = 'admin';
-        $user->email = 'admin@admin.com';
-        $user->password = $user->setPassword('admin');
-        $user->generateAuthKey();
-        $user->save();
-        $uid = $user->getId();
-        //Assign user
-        $auth->assign($super_admin, $uid);
+        try {
+            //Create first user
+            $user = new User();
+            $user->email = 'admin@admin.com';
+            $user->full_name = 'Admin';
+            $user->setPassword('123123');
+            $user->generateAuthKey();
+            $user->save();
+            $uid = $user->getId();
+            //Assign user
+            $auth->assign($super_admin, $uid);
+        } catch (Exception $exception) {
+            throw new Exception($exception->getMessage());
+        }
+
 
         Console::output('Success! RBAC roles has been added.');
 
