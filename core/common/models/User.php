@@ -16,7 +16,8 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
- * @property string $about_us
+ * @property string $about_me
+ * @property string $phone_number
  * @property string $avatar
  * @property string $auth_key
  * @property integer $status
@@ -33,7 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
     public $roles;
     public $password_confirm;
     const STATUS_DEACTIVATED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
 
     const ROLE_BANNED = 'BANNED';
     const ROLE_MEMBER = 'MEMBER';
@@ -82,14 +83,19 @@ class User extends ActiveRecord implements IdentityInterface
                 self::STATUS_DEACTIVATED
             ]],
 
+            [['phone_number'], 'string', 'max' => 30],
+            [['phone_number'], 'match', 'pattern' => '/^(?:00|\+)[0-9]{4}-?[0-9]{7}$/'],
+
             ['full_name', 'filter', 'filter' => 'strip_tags'],
             ['full_name', 'trim'],
             ['full_name', 'required'],
             ['full_name', 'string', 'max' => 70],
 
-            ['about_us', 'string'],
+            ['about_me', 'string'],
 
             ['avatar', 'image'],
+            ['password', 'safe'],
+            ['password_confirm', 'compare', 'compareAttribute' => 'password', 'message' => \Yii::t('app', 'Password does not match the confirm password.')],
 
             ['email', 'trim'],
             ['email', 'required'],
@@ -238,6 +244,10 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function getStatusLabel() {
+        return static::statuses()[$this->status];
+    }
+
     public static function roles()
     {
         return [
@@ -247,6 +257,28 @@ class User extends ActiveRecord implements IdentityInterface
             self::ROLE_EDITOR => Yii::t('app', 'Editor'),
             self::ROLE_MEMBER => Yii::t('app', 'Member'),
             self::ROLE_BANNED => Yii::t('app', 'Banned'),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'full_name' => Yii::t('app', 'Full Name'),
+            'phone_number' => Yii::t('app', 'Phone Number'),
+            'address' => Yii::t('app', 'Address'),
+            'avatar' => Yii::t('app', 'Avatar'),
+            'about_me' => Yii::t('app', 'About Me'),
+            'email' => Yii::t('app', 'Email'),
+            'password_hash' => Yii::t('app', 'Password Hash'),
+            'password_reset_token' => Yii::t('app', 'Password Reset Token'),
+            'auth_key' => Yii::t('app', 'Auth Key'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 }

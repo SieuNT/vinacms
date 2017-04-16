@@ -1,4 +1,4 @@
-FROM php:7.1.3-apache
+FROM php:7.0.17-apache
 COPY php.ini /usr/local/etc/php/
 RUN apt-get update && apt-get install --no-install-recommends -y \
         libfreetype6-dev \

@@ -18,7 +18,7 @@ class m130524_201442_init extends Migration
             'phone_number' => $this->string(30)->null(), //Min 3 max 30
             'address' => $this->string()->null(),
             'avatar' => $this->string()->null(),
-            'about_us' => $this->getDb()->getSchema()->createColumnSchemaBuilder('tinytext')->null(),
+            'about_me' => $this->getDb()->getSchema()->createColumnSchemaBuilder('tinytext')->null(),
             'email' => $this->string()->notNull()->unique(),
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),
