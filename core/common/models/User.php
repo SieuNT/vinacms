@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use vinacms\tools\upload\UploadImageBehavior;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -101,7 +102,12 @@ class User extends ActiveRecord implements IdentityInterface
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => \Yii::t('app','This email address has already been taken.')],
+            [
+                'email',
+                'unique',
+                'targetClass' => User::className(),
+                'message' => \Yii::t('app', 'This email address has already been taken.'),
+            ],
         ];
     }
 
@@ -244,7 +250,8 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    public function getStatusLabel() {
+    public function getStatusLabel()
+    {
         return static::statuses()[$this->status];
     }
 

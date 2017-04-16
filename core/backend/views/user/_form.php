@@ -23,7 +23,9 @@ use vinacms\admin\ActiveForm;
 
     <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'avatar')->fileInput(['maxlength' => true]) ?>
+    <?= Html::img($model->getThumbUploadUrl('avatar'), ['class' => 'img-thumbnail']) ?>
+
+    <?= $form->field($model, 'avatar')->fileInput(['accept' => 'image/*']) ?>
 
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
 

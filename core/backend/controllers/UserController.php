@@ -84,7 +84,7 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+//        echo '<pre>';print_r($model);exit('xxx');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
@@ -116,7 +116,8 @@ class UserController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = UserForm::findOne($id)) !== null) {
+            $model->roles = key(Yii::$app->authManager->getRolesByUser($model->id));
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

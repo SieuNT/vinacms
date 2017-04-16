@@ -31,6 +31,7 @@ class UserForm extends \yii\db\ActiveRecord
     public $password;
     public $password_confirm;
     public $roles;
+
     /**
      * @inheritdoc
      */
@@ -61,18 +62,21 @@ class UserForm extends \yii\db\ActiveRecord
                 User::STATUS_DEACTIVATED
             ]],
 
+            [['avatar'], 'image'],
+
             [['full_name', 'email'], 'required'],
-            [['about_us'], 'string'],
+            [['about_me'], 'string'],
             [['status'], 'integer'],
             [['full_name'], 'string', 'max' => 70],
 
             [['phone_number'], 'string', 'max' => 30],
             [['phone_number'], 'match', 'pattern' => '/\(?\d+\)?[-.\s]?\d+[-.\s]?\d+/'],
 
-            [['address', 'avatar', 'email'], 'string', 'max' => 255],
-            [['email'], 'unique', 'targetClass' => '\common\models\User', 'message' => \Yii::t('app','This email address has already been taken.')],
+            [['address', 'email'], 'string', 'max' => 255],
 
-            ['password', 'required'],
+            [['email'], 'unique'],
+
+            ['password', 'required', 'on' => 'create'],
             ['password', 'string', 'min' => 6],
             ['password_confirm', 'compare', 'compareAttribute' => 'password', 'message' => \Yii::t('app', 'Password does not match the confirm password.')],
         ];
@@ -102,6 +106,9 @@ class UserForm extends \yii\db\ActiveRecord
 
     public function create()
     {
+        if (!$this->validate()) {
+            return null;
+        }
         $user = new User();
         $user->full_name = $this->full_name;
         $user->email = $this->email;
@@ -117,7 +124,7 @@ class UserForm extends \yii\db\ActiveRecord
             $auth = \Yii::$app->authManager;
             $auth->assign($auth->getRole($this->roles), $uid);
             $transaction->commit();
-            return true;
+            return $user;
         } catch (Exception $exception) {
             $transaction->rollBack();
             throw new Exception($exception->getMessage());
