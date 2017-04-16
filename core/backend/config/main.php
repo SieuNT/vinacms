@@ -48,7 +48,7 @@ return [
         ],
     ],
     'as globalAccess' => [
-        'class' => \vinacms\behaviors\GlobalAccessBehavior::class,
+        'class' => \vinacms\behaviors\GlobalAccessBehavior::className(),
         'rules' => [
             [
                 'controllers' => ['gii/default'],
@@ -80,6 +80,11 @@ return [
             ],
             [
                 'controllers' => ['user'],
+                'allow' => true,
+                'roles' => [User::ROLE_ADMIN],
+            ],
+            [
+                'controllers' => ['elFinder'],
                 'allow' => true,
                 'roles' => [User::ROLE_ADMIN],
             ]
@@ -151,9 +156,9 @@ return [
                 'onlyMimes' => ["image/png", "application/x-shockwave-flash"]
             ],
             'root' => [
-                'baseUrl' => '',
-                'basePath' => '@frontend/web',
-                'path' => 'uploads',
+                'baseUrl' => '/uploads',
+                'basePath' => '@uploads',
+                'path' => 'images',
                 'name' => 'Uploads',
                 'options' => [
                     'uploadOverwrite' => false,

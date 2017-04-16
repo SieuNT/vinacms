@@ -2,7 +2,6 @@
 
 namespace vinacms\tools\elfinder;
 
-
 use yii\web\AssetBundle;
 
 class AssetsCallBack extends AssetBundle{

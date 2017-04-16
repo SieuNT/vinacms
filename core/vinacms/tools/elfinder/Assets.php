@@ -7,7 +7,7 @@ use yii\web\JqueryAsset;
 
 class Assets extends AssetBundle
 {
-	public $sourcePath = '@vendor/studio-42/elfinder';
+	public $sourcePath = '@vinacms/tools/elfinder/core';
 
 	public $publishOptions = [
         'except' => [
@@ -40,7 +40,7 @@ class Assets extends AssetBundle
 	}
 
     public static function getPathUrl(){
-        return \Yii::$app->assetManager->getPublishedUrl("@vendor/studio-42/elfinder");
+        return \Yii::$app->assetManager->getPublishedUrl("@vinacms/tools/elfinder/core");
     }
 
     public static function getSoundPathUrl(){

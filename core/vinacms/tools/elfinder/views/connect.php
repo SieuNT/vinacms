@@ -3,7 +3,7 @@
  * @var array $options
  * @var array $plugin
  */
-
+require_once __DIR__. '/../core/php/autoload.php';
 define('ELFINDER_IMG_PARENT_URL', \vinacms\tools\elfinder\Assets::getPathUrl());
 
 // run elFinder

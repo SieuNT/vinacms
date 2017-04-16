@@ -1,4 +1,15 @@
 <?php
+/**
+ * Date: 28.11.2014
+ * Time: 14:21
+ *
+ * This file is part of the MihailDev project.
+ *
+ * (c) MihailDev project <http://github.com/mihaildev/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+*/
 
 namespace vinacms\tools\elfinder;
 use vinacms\tools\elfinder\volume\Local;
@@ -9,7 +20,7 @@ use Yii;
 /**
  * Class PathController
  *
- * @package mihaildev\elfinder
+ * @package vinacms\tools\elfinder
  */
 class PathController extends BaseController{
 	public $disabledCommands = ['netmount'];

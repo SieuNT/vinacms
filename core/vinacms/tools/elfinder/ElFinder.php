@@ -1,4 +1,8 @@
 <?php
+/**
+ * Date: 22.01.14
+ * Time: 23:44
+ */
 
 namespace vinacms\tools\elfinder;
 
@@ -10,7 +14,7 @@ use yii\helpers\Json;
 
 /**
  * Class Widget
- * @package mihaildev\elfinder
+ * @package vinacms\tools\elfinder
  */
 
 class ElFinder extends BaseWidjet{

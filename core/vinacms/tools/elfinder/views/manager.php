@@ -4,7 +4,7 @@
  * @var array $options
 
  */
-use mihaildev\elfinder\Assets;
+use vinacms\tools\elfinder\Assets;
 use yii\helpers\Json;
 
 

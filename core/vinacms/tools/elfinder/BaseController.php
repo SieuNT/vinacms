@@ -14,7 +14,7 @@ use yii\web\JsExpression;
 /**
  * Class BaseController
  *
- * @package mihaildev\elfinder
+ * @package vinacms\tools\elfinder
  */
 class BaseController extends Controller{
 	public $access = ['@'];
